@@ -1,5 +1,6 @@
 package memoization;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,8 +45,20 @@ public class CanSum {
         return false;
     }
 
+    //tested with java8 stream
+    public static boolean canSumWithStream(int targetSum, int[] numbers){
+        for (int num : numbers) {
+            int rem = targetSum - num;
+            return Arrays.stream(numbers)
+                    .parallel()
+                    .filter(x -> canSum(rem, numbers)).findFirst().isPresent();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
-        System.out.println(canSumOptimize(300, new int[]{7,
-                14}));
+        System.out.println(canSumWithStream(300, new int[]{2,
+                1,
+                3}));
     }
 }
