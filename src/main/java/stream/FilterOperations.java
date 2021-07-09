@@ -3,6 +3,7 @@ package stream;
 import numbers.Prime;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -21,12 +22,20 @@ public class FilterOperations {
                 .collect(Collectors.toList());
     }
 
+    public static int findNthLargest(List<Integer> numbers, int nth){
+        return numbers.stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList())
+                .get(nth-1);
+    }
+
     public static void main(String[] args) {
         List<String> otherCountries = Arrays.asList("Switzerland", "USA", "India", "Australia", "Pakistan", "Canada", "Nepal", "Philippines");
         List<String> sarcCountries = Arrays.asList("India", "Pakistan", "Butan", "SriLanka", "Afganistan", "Nepal");
 
-        List<Integer> numbers = IntStream.range(1,100).boxed().collect(Collectors.toList());
+        List<Integer> numbers = IntStream.rangeClosed(1,100).boxed().collect(Collectors.toList());
         System.out.println(findPrimeNumbers(numbers));
         System.out.println(getCommonList(otherCountries, sarcCountries));
+        System.out.println(findNthLargest(numbers, 2));
     }
 }
