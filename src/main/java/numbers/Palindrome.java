@@ -1,7 +1,5 @@
 package numbers;
 
-import java.util.stream.IntStream;
-
 public class Palindrome {
     public static boolean isPalindrome(int num) {
         int temp = num;
