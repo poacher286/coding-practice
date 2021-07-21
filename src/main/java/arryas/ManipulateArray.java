@@ -6,7 +6,7 @@ public class ManipulateArray {
     public static int[] moveZeroToLast(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] == 0) {
+                if (arr[j] == 0) {//Compare each element if 0 swap with next element
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
@@ -18,8 +18,8 @@ public class ManipulateArray {
 
     public static int[] moveZeroToFirst(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 1; j < arr.length; j++) {
-                if (arr[j] == 0) {
+            for (int j = 1; j < arr.length - i; j++) {
+                if (arr[j] == 0) {//Compare each element if 0 swap with previous element
                     int temp = arr[j];
                     arr[j] = arr[j - 1];
                     arr[j - 1] = temp;
