@@ -11,10 +11,10 @@ public class QuickSort {
         int i = left;
         int j = right;
         while (i <= j) {
-            while (arr[i] < pivotValue) {
+            if (arr[i] < pivotValue) {
                 i++;
             }
-            while (arr[j] > pivotValue) {
+            if (arr[j] > pivotValue) {
                 j--;
             }
             if (i <= j) {

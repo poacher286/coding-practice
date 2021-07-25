@@ -2,7 +2,7 @@ package arryas;
 
 import java.util.Arrays;
 
-public class SortArray {
+public class BubbleSort {
     public static int[] bubbleSort(int[] nums) {
         for (int i = 0; i < nums.length-1; i++) {
             for (int j = 0; j < nums.length - i - 1; j++) {
