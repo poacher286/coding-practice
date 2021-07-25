@@ -10,14 +10,19 @@ import java.util.stream.IntStream;
 public class PrimeTest {
     @Test
     public void testPrime() {
-        List<Integer> list = IntStream.rangeClosed(10000, 20000)
+        List<Integer> list1 = IntStream.rangeClosed(10000, 20000)
                 .boxed()
                 .parallel()//to improve performance
                 .filter(Prime::isPrime)
                 .collect(Collectors.toList());
 
-        System.out.println("Prime list : "+list);
-        Assertions.assertTrue(list.size()>5);
+        List<Integer> list2 = IntStream.rangeClosed(10000, 20000)
+                .boxed()
+                .parallel()//to improve performance
+                .filter(Prime::isPrimeNew)
+                .collect(Collectors.toList());
+
+        Assertions.assertEquals(list1, list2);
 
     }
 }
