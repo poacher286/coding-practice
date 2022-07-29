@@ -7,9 +7,22 @@ public class GCD {
         return gcd(b, a % b);
     }
 
-    public static void main(String[] args) {
-        System.out.println(gcd(5, 10));
-        System.out.println(gcd(5, 7));
-        System.out.println(gcd(5, 25));
+    /**
+     * return gcd of smallest and largest number
+     * @param nums number array
+     * @return gcd of smallest and largest number
+     */
+    public static int findGCD(int[] nums) {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int num : nums) {
+            if (num < min) {
+                min = num;
+            }  if (num >= max) {
+                max = num;
+            }
+        }
+        return gcd(min, max);
     }
+
 }
