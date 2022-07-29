@@ -25,4 +25,8 @@ public class GCD {
         return gcd(min, max);
     }
 
+    public static void main(String[] args) {
+        System.out.println(gcd(2,217983653));
+    }
+
 }

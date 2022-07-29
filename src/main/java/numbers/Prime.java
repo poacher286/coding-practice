@@ -12,7 +12,7 @@ public class Prime {
     }
 
     public static boolean isPrimeNew(int number) {
-        if (number < 3) {
+        if (number == 2 ||  number == 3) {
             return true;
         }
 

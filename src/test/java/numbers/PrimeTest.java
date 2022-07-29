@@ -22,6 +22,10 @@ public class PrimeTest {
                 .filter(Prime::isPrimeNew)
                 .collect(Collectors.toList());
 
+        int totalPrime = (int) IntStream.range(2, 5000000).boxed().filter(Prime::isPrimeNew).count();
+        System.out.println(totalPrime);
+        Assertions.assertTrue(totalPrime>100);
+
         Assertions.assertEquals(list1, list2);
 
     }
