@@ -7,7 +7,7 @@ public class AllPossibleSubSets {
     /**
      * for i = 0 to i < 2^n
      * for j = 0 to j < n
-     * if jth bit is 1
+     * if jth bit of i is 1
      * add in string
      *
      * @param a
