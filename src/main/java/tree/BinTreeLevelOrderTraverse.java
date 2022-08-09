@@ -19,7 +19,7 @@ public class BinTreeLevelOrderTraverse {
     private void helper(TreeNode root, List<List<Integer>> res, int level){
         if (root == null) return;
         if (level >= res.size()) {
-            res.add(new LinkedList<Integer>());
+            res.add(new LinkedList<>());
         }
         res.get(level).add(root.val);
         helper(root.left , res, level+1);
