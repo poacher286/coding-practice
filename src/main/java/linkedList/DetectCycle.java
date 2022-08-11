@@ -8,7 +8,7 @@ public class DetectCycle {
      *
      * Algo - slow and fast will definetly meet at some point if it has cycle
      * they will meet k step ahead from intersection point
-     * so we again start fast/slow from head and move 1 step so that they will meet at intersection point
+     * so we again start fast/slow from head and move 1 steps at a time so that they will meet at intersection point
      *
      * @param head
      * @return
