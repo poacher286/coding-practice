@@ -46,6 +46,23 @@ public class Reverse {
         return str.equals(reverseString(str));
     }
 
+    /**
+     * A phrase is a palindrome if, after converting all uppercase letters into lowercase letters
+     * and removing all non-alphanumeric characters,
+     * it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+     *
+     * Given a string s, return true if it is a palindrome, or false otherwise.
+     * @param s
+     * @return
+     */
+    public static boolean isPalindrome(String s) {
+        //POSIX class [\p{Alpha}\p{Digit}]
+        //[\p{Alnum}], which matches with any alphanumeric character [A-Za-z0-9]
+        //[^\p{Alnum}] --> NOT alphanumeric
+        s = s.toLowerCase().replaceAll("[^\\p{Alnum}]", "");
+        return s.equals(reverseString(s));
+    }
+
     public static void main(String[] args) {
         System.out.println(reverseString("ABCD EFGH IJKL"));
         System.out.println(reverseSentence("ABCD EFGH IJKL"));
