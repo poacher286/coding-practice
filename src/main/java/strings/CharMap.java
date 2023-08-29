@@ -1,5 +1,6 @@
 package strings;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -11,7 +12,19 @@ public class CharMap {
     }
 
     public static void main(String[] args) {
-        String input = "POACHER";
-        System.out.println(charMap(input));
+        String input = "POACHERPOACHER";
+        System.out.println(charMap1(input));
+    }
+
+    public static Map<Character, Integer> charMap1 (String input ){
+        Map<Character, Integer> map = new HashMap<>();
+        for(char c : input.toCharArray()){
+            if (map.containsKey(c)) {
+                map.put(c, map.get(c)+1);
+            }else{
+                map.put(c, 1);
+            }
+        }
+        return map;
     }
 }
