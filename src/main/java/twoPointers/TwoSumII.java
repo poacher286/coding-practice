@@ -21,7 +21,7 @@ public class TwoSumII {
         int right = numbers.length - 1;
         while (left <= right){
             if (numbers[left] + numbers[right] == target){
-                res[0] = left+1;
+                res[0] = left+1;//adding 1 as this is 1-indexed array
                 res[1] = right+1;
                 break;
             }else if (numbers[left] + numbers[right] < target){
