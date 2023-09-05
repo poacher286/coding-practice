@@ -10,17 +10,18 @@ public class BinTreePreorderTraversal {
      * @param root
      * @return
      */
-    static List<Integer> traveller = new ArrayList<>();
-
     public static List<Integer> preorderTraversal(TreeNode root) {
-        if (root == null) {
-            return new ArrayList<>();
-        }
+        List<Integer> res = new ArrayList<>();
+        helper(root, res);
+        return res;
+    }
 
-        traveller.add(root.val);
-        preorderTraversal(root.left);
-        preorderTraversal(root.right);
-        return traveller;
+    public static void helper(TreeNode root, List<Integer> res) {
+        if (root != null) {
+            res.add(root.val);
+            helper(root.left, res);
+            helper(root.right, res);
+        }
     }
 
     public static void main(String[] args) {

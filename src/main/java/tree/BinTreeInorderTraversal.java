@@ -6,19 +6,21 @@ import java.util.List;
 public class BinTreeInorderTraversal {
     /**
      * leftsubtree -> root -> right subtree
-     * @param node
+     * @param root
      * @return
      */
-    static List<Integer> traveller = new ArrayList<>();
-    public static List<Integer> inorderTraversal(TreeNode root){
-        if (root == null) {
-            return new ArrayList<>();
-        }
+    public static List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        helper(root, res);
+        return res;
+    }
 
-        inorderTraversal(root.left);
-        traveller.add(root.val);
-        inorderTraversal(root.right);
-        return traveller;
+    public static void helper(TreeNode root, List<Integer> res) {
+        if (root != null) {
+            helper(root.left, res);
+            res.add(root.val);
+            helper(root.right, res);
+        }
     }
 
     public static void main(String[] args) {
