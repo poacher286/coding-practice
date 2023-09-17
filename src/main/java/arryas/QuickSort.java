@@ -8,27 +8,27 @@ public class QuickSort {
         int pivot = left + (right - left) / 2;
         int pivotValue = arr[pivot];
 
-        int i = left;
-        int j = right;
-        while (i <= j) {
-            if (arr[i] < pivotValue) {
-                i++;
+        int left_pointer = left;
+        int right_pointer = right;
+        while (left_pointer <= right_pointer) {
+            while (arr[left_pointer] < pivotValue) {
+                left_pointer++;
             }
-            if (arr[j] > pivotValue) {
-                j--;
+            while (arr[right_pointer] > pivotValue) {
+                right_pointer--;
             }
-            if (i <= j) {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-                i++;
-                j--;
+            if (left_pointer <= right_pointer) {
+                int temp = arr[left_pointer];
+                arr[left_pointer] = arr[right_pointer];
+                arr[right_pointer] = temp;
+                left_pointer++;
+                right_pointer--;
             }
-            if (left < i) {
-                quickSort(arr, left, j);
+            if (left < left_pointer) {
+                quickSort(arr, left, right_pointer);
             }
-            if (right > i) {
-                quickSort(arr, i, right);
+            if (right > left_pointer) {
+                quickSort(arr, left_pointer, right);
             }
         }
         return arr;
