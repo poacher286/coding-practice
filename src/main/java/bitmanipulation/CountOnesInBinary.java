@@ -2,13 +2,24 @@ package bitmanipulation;
 
 public class CountOnesInBinary {
     /**
-     * x = 8 -->    1000  --> power of 2 only have one 1s
+     *let
+     * x = 8   -->  1000  --> power of 2 only have one 1s
      * x-1 = 7 -->  0111
      * x & x-1 ==   0000  --> we get 0
+     * <------------------------------
+     * Only 1 iteration
      *
-     * x = 11 -->    1011
-     * x-1 = 10 -->  1010 --> x-1 flips only last digit
+     * x = 11   -->  1011
+     * x-1 = 10 -->  1010 --> x-1 flips last digit
      * x & x-1 ==    1010
+     *
+     * x = 10  -->   1010
+     * x-1 = 9 -->   0101
+     * x & x-1 ==    0000
+     * <------------------------------
+     * 2 iteration
+     *
+     * ==> count number of iteration
      * @param x - num
      * @return number of 1s
      */
