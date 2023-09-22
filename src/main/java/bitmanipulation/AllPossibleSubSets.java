@@ -26,4 +26,23 @@ public class AllPossibleSubSets {
         return setList;
     }
 
+    public static List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ansList = new ArrayList<>();
+        for (int i = 0; i< (1 << nums.length); i++){
+            List<Integer> subsetList = new ArrayList<>();
+            for (int j = 0;  j < nums.length; j++){
+                if ((i & (1 << j)) == 0){
+                    subsetList.add(nums[j]);
+                }
+            }
+            ansList.add(subsetList);
+        }
+        return ansList;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {0};
+        System.out.println(subsets(nums));
+    }
+
 }
