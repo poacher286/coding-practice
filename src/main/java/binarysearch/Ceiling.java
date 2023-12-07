@@ -1,7 +1,7 @@
 package binarysearch;
 
-public class Cieling {
-    public static int cieling(int[] arr, int tar){
+public class Ceiling {
+    public static int ceiling(int[] arr, int tar){
         int start = 0;
         int end = arr.length - 1;
 
@@ -21,6 +21,6 @@ public class Cieling {
     public static void main(String[] args) {
         int[] arr = {1,3,4,5,7,12,13,16,18,21};
         int tar = 10;
-        System.out.println(cieling(arr, tar));
+        System.out.println(ceiling(arr, tar));
     }
 }
