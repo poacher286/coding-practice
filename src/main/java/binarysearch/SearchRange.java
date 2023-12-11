@@ -1,5 +1,7 @@
 package binarysearch;
 
+import java.util.Arrays;
+
 public class SearchRange {
     public static int[] searchRange(int[] arr, int tar){
         int left = 0;
@@ -12,7 +14,7 @@ public class SearchRange {
 
     private static int binarySearch(int[] arr, int left, int right, int tar, boolean firstIdx) {
         int idx = 0;
-        while (left < right){
+        while (left <= right){
             int mid = left + (right - left) / 2;
 
             if (arr[mid] < tar){
@@ -29,5 +31,10 @@ public class SearchRange {
             }
         }
         return idx;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,3};
+        System.out.println(Arrays.toString(searchRange(arr, 3)));
     }
 }
