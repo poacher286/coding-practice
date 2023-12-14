@@ -3,6 +3,7 @@ package tree;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class BinTreeLevelOrderTraverse {
     /**
@@ -24,5 +25,34 @@ public class BinTreeLevelOrderTraverse {
         res.get(level).add(root.val);
         helper(root.left , res, level+1);
         helper(root.right , res, level+1);
+    }
+
+    public List<List<Integer>> levelOrder2(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null){
+            return res;
+        }
+
+        Queue<TreeNode> treeNodeQueue = new LinkedList<>();
+        treeNodeQueue.offer(root);
+
+        while (!treeNodeQueue.isEmpty()){
+            int levelSize = treeNodeQueue.size();
+
+            List<Integer> currLevel = new ArrayList<>();
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode currNode = treeNodeQueue.poll();
+                currLevel.add(currNode.val);
+                if (currNode.left != null){
+                    treeNodeQueue.offer(currNode.left);
+                }
+                if (currNode.right != null){
+                    treeNodeQueue.offer(currNode.right);
+                }
+            }
+            res.add(currLevel);
+        }
+
+        return res;
     }
 }
