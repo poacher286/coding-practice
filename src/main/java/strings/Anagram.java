@@ -58,6 +58,30 @@ public class Anagram {
         return Arrays.equals(sChars, tChars);
     }
 
+    public static boolean isAnagram2(String s , String t){
+        int n = s.length();
+        int m = t.length();
+
+        if(n != m){
+            return false;
+        }
+
+        int[] charCount = new int[26];
+
+        for(char c : s.toCharArray()){
+            charCount[c - 'a']++;
+        }
+
+        for(char c : t.toCharArray()){
+            if(charCount[c - 'a'] < 1){
+                return false;
+            }
+            charCount[c- 'a']--;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         String[] strings = new String[]{"act", "cat", "tac"};
         System.out.println(isAnagram(strings));
