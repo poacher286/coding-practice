@@ -4,6 +4,8 @@ public class PrintNumbers {
     public static void main(String[] args) throws InterruptedException {
         Thread threadA = new PrintOdd();
         Thread threadB = new PrintEven();
+        threadA.setName("ODD");
+        threadB.setName("EVEN");
         threadA.start();
         threadB.start();
 
@@ -18,7 +20,7 @@ public class PrintNumbers {
             synchronized (this) {
                 while (count < n) {
                     if (count % 2 == 1) {
-                        System.out.println(count);
+                        System.out.println(Thread.currentThread().getName() + " : " +count);
                         count++;
                     }
                     notify();
@@ -33,7 +35,7 @@ public class PrintNumbers {
             synchronized (this) {
                 while (count <= n) {
                     if (count % 2 == 0) {
-                        System.out.println(count);
+                        System.out.println(Thread.currentThread().getName() + " : " +count);
                         count++;
                     }
                     notify();

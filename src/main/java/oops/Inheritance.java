@@ -3,6 +3,9 @@ package oops;
 public class Inheritance {
     public static void main(String[] args) {
         C obj = new C();
+        A a = new C();
+        A a1 = new B();//can assign child class object to parent class
+//        B b = new A(); // can not assign parent class instance to child class
         System.out.println(obj.a);
     }
 }

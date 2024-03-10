@@ -63,10 +63,40 @@ public class Reverse {
         return s.equals(reverseString(s));
     }
 
+    /**
+     * Input -  "ABC DE FG"
+     * Output-  "GFE DC BA"
+     * @param str
+     * @return
+     */
+    public static String reverseStringWhileSpaceIntact(String str){
+        char[] chars = str.toCharArray();
+        int left = 0;
+        int right = str.length() - 1;
+        while (left <= right){
+            if (chars[left] != ' ' && chars[right] != ' '){
+                int temp = chars[left];
+                chars[left] = chars[right];
+                chars[right] = (char) temp;
+                left++;
+                right--;
+            }else if (chars[left] == ' ' && chars[right] != ' '){
+                left++;
+            }else if (chars[left] != ' ' && chars[right] == ' '){
+                right--;
+            }else{
+                left++;
+                right--;
+            }
+        }
+        return new String(chars);
+    }
+
     public static void main(String[] args) {
-        System.out.println(reverseString("ABCD EFGH IJKL"));
-        System.out.println(reverseSentence("ABCD EFGH IJKL"));
-        System.out.println(isPalindromeString("nitin"));
-        System.out.println(reverseWord("ABCD EFGH IJKL"));
+//        System.out.println(reverseString("ABCD EFGH IJKL"));
+//        System.out.println(reverseSentence("ABCD EFGH IJKL"));
+//        System.out.println(isPalindromeString("nitin"));
+//        System.out.println(reverseWord("ABCD EFGH IJKL"));
+        System.out.println(reverseStringWhileSpaceIntact("ABC DE FG"));
     }
 }
