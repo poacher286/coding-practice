@@ -16,6 +16,21 @@ public class ManipulateArray {
         return arr;
     }
 
+    public static int[] moveZeroToLast2(int[] arr) {
+        int left = 0;
+        int right = 0;
+        while(right < arr.length){//[0,1,0,3,12] //[1,0,0,3,12]
+            if (arr[right] != 0){
+                int temp = arr[right];
+                arr[right] = arr[left];
+                arr[left] = temp;
+                left++;
+            }
+            right++;
+        }
+        return arr;
+    }
+
     public static int[] moveZeroToFirst(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 1; j < arr.length - i; j++) {
