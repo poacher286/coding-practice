@@ -19,11 +19,12 @@ public class CharMap {
     public static Map<Character, Integer> charMap1 (String input ){
         Map<Character, Integer> map = new HashMap<>();
         for(char c : input.toCharArray()){
-            if (map.containsKey(c)) {
-                map.put(c, map.get(c)+1);
-            }else{
-                map.put(c, 1);
-            }
+//            if (map.containsKey(c)) {
+//                map.put(c, map.get(c)+1);
+//            }else{
+//                map.put(c, 1);
+//            }
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
         return map;
     }
