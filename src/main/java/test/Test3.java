@@ -35,7 +35,8 @@ public class Test3 {
         for(int i = 0; i < s.length();){
             char c = s.charAt(i++);
             StringBuilder num = new StringBuilder("0");
-            while (i < s.length() && s.charAt(i) - '0' >= 0 && s.charAt(i) - '0' < 10){
+//            while (i < s.length() && s.charAt(i) - '0' >= 0 && s.charAt(i) - '0' < 10){
+            while (i < s.length() && Character.isDigit(s.charAt(i))){
                 num.append(s.charAt(i++));
             }
             countMap.put(c, countMap.getOrDefault(c, 0) + Integer.parseInt(num.toString()));
