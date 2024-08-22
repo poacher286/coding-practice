@@ -27,6 +27,7 @@ public class BinTreeLevelOrderTraverse {
         helper(root.right , res, level+1);
     }
 
+    //BFS Use Queue
     public List<List<Integer>> levelOrder2(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null){
