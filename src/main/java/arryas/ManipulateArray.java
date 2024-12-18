@@ -17,6 +17,9 @@ public class ManipulateArray {
     }
 
     public static int[] moveZeroToLast2(int[] arr) {
+        //move those elements to fron which are not zero
+        //iterate over array and increase right
+        //when swap then only increase left value
         int left = 0;
         int right = 0;
         while(right < arr.length){//[0,1,0,3,12] //[1,0,0,3,12]

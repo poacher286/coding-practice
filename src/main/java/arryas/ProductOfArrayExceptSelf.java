@@ -39,11 +39,14 @@ public class ProductOfArrayExceptSelf {
         int suffixProduct = 1;
         int[] result = new int[numsLength];
         //[1,2,3,4]
+        //[1,1,2,6]
         for(int i = 0; i < numsLength; i++) {
             result[i] = prefixProduct;
             prefixProduct *= nums[i];
         }
-        //---> [1,1,2,6]
+        //[1,1,2,6] result
+        //[1,2,3,4] nums
+        //[24,12,8,6]
         for(int i = numsLength-1; i >= 0; i--) {
             result[i] *= suffixProduct;
             suffixProduct *= nums[i];

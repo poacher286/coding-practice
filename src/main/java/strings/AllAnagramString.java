@@ -1,8 +1,6 @@
 package strings;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class AllAnagramString {
     /**
@@ -39,8 +37,44 @@ public class AllAnagramString {
         return ans;
     }
 
+    public static List<Integer> findAnagrams2(String s, String p) {
+        List<Integer> ans = new ArrayList<>();
+        if (s.length() < p.length()) return ans;
+
+        Map<Character, Integer> sCount = new HashMap<>();
+        Map<Character, Integer> pCount = new HashMap<>();
+        for (int i = 0; i < p.length(); i++) {
+            pCount.put(p.charAt(i), pCount.getOrDefault(p.charAt(i), 0) + 1);
+            sCount.put(s.charAt(i), sCount.getOrDefault(s.charAt(i), 0) + 1);
+        }
+
+        if (pCount.equals(sCount)){
+            ans.add(0);
+        }
+
+        int left = 0;
+        for (int right = p.length(); right < s.length(); right++) {
+            sCount.put(s.charAt(right), sCount.getOrDefault(s.charAt(right), 0) + 1);
+            sCount.put(s.charAt(left), sCount.get(s.charAt(left)) - 1);
+//            sCount[s.charAt(left) - 'a']--;
+
+            //invalid
+            if (sCount.get(s.charAt(left)) == 0) {
+                sCount.remove(s.charAt(left));
+            }
+
+            left++;
+            if (pCount.equals(sCount)) {
+                ans.add(left);
+            }
+
+        }
+        return ans;
+    }
+
+
     public static void main(String[] args) {
         String s = "abab", p = "ab";
-        System.out.println(findAnagrams(s, p));
+        System.out.println(findAnagrams2(s, p));
     }
 }
