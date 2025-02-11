@@ -1,6 +1,7 @@
 package twoPointers;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 public class LastStoneWeight {
     /**
@@ -45,5 +46,26 @@ public class LastStoneWeight {
         }
         newarr[ind] = res;
         return lastStoneWeightRecurssion(newarr);
+    }
+
+
+    public int lastStoneWeightPriorityQueue(int[] stones) {
+        //decreasing Priority queue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>((a, b) -> b - a);
+        for (int stone : stones) {
+            priorityQueue.offer(stone);
+        }
+
+        while (priorityQueue.size() > 1) {
+            int top1 = priorityQueue.poll();
+            int top2 = priorityQueue.poll();
+            int diff = Math.abs(top1 - top2);
+
+            if (diff != 0) {
+                priorityQueue.offer(diff);
+            }
+        }
+
+        return priorityQueue.size() != 0 ? priorityQueue.peek() : 0;
     }
 }
