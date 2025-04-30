@@ -34,6 +34,32 @@ public class ManipulateArray {
         return arr;
     }
 
+    public static int[] moveZeroToLast3(int[] arr) {
+        //[1,0,3,4,5,0,6]
+        //[1,3,0,4,5,0,6]
+
+        //[1,3,4,5,6,0,0]
+
+        //[1,0,0,3,4]
+        //[1,3,0,0,4]
+
+        int j;
+        for (int i = 0; i < arr.length - 1; i++) {
+            j = i + 1;
+            if (arr[i] == 0) {
+                //swap with next nonzero element
+                while (arr[j] == 0 && j < arr.length - 1) {
+                    j++;
+                }
+                //swap arr[i] with arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        return arr;
+    }
+
     public static int[] moveZeroToFirst(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 1; j < arr.length - i; j++) {
@@ -48,20 +74,12 @@ public class ManipulateArray {
     }
 
     public static void main(String[] args) {
-        int[] arr = {
-                1,
-                3,
-                2,
-                1,
-                0,
-                9,
-                0,
-                9,
-                4,
-                8
-        };
-        System.out.println(Arrays.toString(moveZeroToLast(arr)));
-        System.out.println(Arrays.toString(moveZeroToFirst(arr)));
+//        int[] arr = {1,2,0,0,3,4,0,5,6,0};
+        int[] arr = {1,2,0,0,0,3};
+//        System.out.println(Arrays.toString(moveZeroToLast(arr)));
+//        System.out.println(Arrays.toString(moveZeroToFirst(arr)));
+        System.out.println(Arrays.toString(moveZeroToLast3(arr)));
+        System.out.println(Arrays.toString(moveZeroToLast2(arr)));
 
     }
 }
