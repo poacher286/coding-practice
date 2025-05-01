@@ -1,8 +1,5 @@
 package strings;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 public class CheckValidParanthesis {
     /**
      * Given a string s containing only three types of characters: '(', ')' and '*', return true if s is valid.

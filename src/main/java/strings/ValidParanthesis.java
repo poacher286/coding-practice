@@ -27,12 +27,12 @@ public class ValidParanthesis {
             }
 
         }
-        return st.size() == 0;
+        return st.isEmpty();
     }
 
     public static boolean handleClosing(Stack<Character> st, char someBracket) {
 
-        if (st.size() == 0) {
+        if (st.isEmpty()) {
             return false;
         } else if (st.peek() != someBracket) {
             return false;
