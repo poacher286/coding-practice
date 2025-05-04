@@ -60,6 +60,17 @@ public class ManipulateArray {
         return arr;
     }
 
+    public void moveZeroes(int[] nums) {
+        int cur = 0;
+        for(int num : nums){
+            if(num != 0)
+                nums[cur++] = num;//add non zero element first
+        }
+        while(cur < nums.length){
+            nums[cur++] = 0;//and add zero at the end
+        }
+    }
+
     public static int[] moveZeroToFirst(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 1; j < arr.length - i; j++) {
