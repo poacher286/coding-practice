@@ -27,4 +27,15 @@ public class MaxProfitSellStock {
         }
         return maxProfit;
     }
+
+    public static int maxProfit3(int[] prices){
+        int min_price = Integer.MAX_VALUE;
+        int max_profit = 0;
+        for (int price : prices) {
+            min_price = Math.min(min_price, price);
+            int curr_profit = price - min_price;
+            max_profit = Math.max(max_profit, curr_profit);
+        }
+        return max_profit;
+    }
 }

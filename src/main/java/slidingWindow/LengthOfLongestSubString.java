@@ -51,6 +51,31 @@ public class LengthOfLongestSubString {
         return maxLength;
     }
 
+    //return longest substring without repeating character
+    public static String longestSubString(String s) {
+        Set<Character> set = new HashSet<>();
+        int left = 0, maxLength = 0;
+        String ans = "";
+
+        for (int right = 0; right < s.length(); right++) {
+            char currentChar = s.charAt(right);
+
+            while (set.contains(currentChar)) {
+                set.remove(s.charAt(left));
+                left++;
+            }
+
+            set.add(currentChar);
+            int currLength = right - left + 1;
+            if (currLength > maxLength) {
+                maxLength = currLength;
+                ans = s.substring(left, right + 1);
+            }
+        }
+
+        return ans;
+    }
+
 
     public int lengthOfLongestSubstringMap(String s) {
         int n = s.length();
@@ -106,5 +131,6 @@ public class LengthOfLongestSubString {
     public static void main(String[] args) {
         String s = "abcabcbb";
         System.out.println(lengthOfLongestSubstring(s));
+        System.out.println(longestSubString(s));
     }
 }
