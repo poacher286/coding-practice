@@ -64,4 +64,26 @@ public class CourceSchedule {
         }
         return graph;
     }
+
+    public boolean canFinish2(int numCourses, int[][] prerequisites){
+        Map<Integer, List<Integer>> graph = buildGraph(numCourses, prerequisites);
+
+        Map<Integer, Boolean> visited = new HashMap<>();
+        for (int i = 0; i < numCourses; i++) {
+            Map<Integer, Boolean> tracker = new HashMap<>();
+            if(detectCycle(graph, i, tracker, visited)) return false;
+        }
+        return true;
+    }
+
+    private boolean detectCycle(Map<Integer, List<Integer>> graph, int node, Map<Integer, Boolean> tracker, Map<Integer, Boolean> visited) {
+        tracker.put(node, true);
+        visited.put(node, true);
+        for (int neighbor : graph.get(node)) {
+            if (!visited.containsKey(neighbor) && detectCycle(graph, neighbor, tracker, visited)) return true;
+            else if (tracker.containsKey(neighbor)) return true;
+        }
+        tracker.remove(node);
+        return false;
+    }
 }
