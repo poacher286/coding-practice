@@ -51,7 +51,7 @@ class MyComparator implements Comparator<Map.Entry<String, Integer>> {
         String word2 = e2.getKey();
         int freq2 = e2.getValue();
         if (freq1 != freq2) {
-            return freq2 - freq1;
+            return Integer.compare(freq1, freq2);
         } else {
             return word1.compareTo(word2);
         }
