@@ -50,9 +50,44 @@ public class MaxConsecutiveOncesIII {
         return right - left;
     }
 
+    public static int findMaxConsecutiveOnes2(int[] nums) {
+        int left = 0;
+        int right = 0;
+        int zeroCount = 0;
+        for(; right < nums.length; right++){//[1,1,1,0]
+            if (nums[right] == 0){
+                zeroCount++;
+            }
+            if (zeroCount > 0){
+                if (nums[left] == 0){
+                    zeroCount--;
+                }
+                left++;
+            }
+        }
+        return right - left;
+    }
+
+    public static int longestOnes2(int[] nums, int k) {
+        int left = 0;
+        int right = 0;
+        for(; right < nums.length; right++){
+            if (nums[right] == 0){
+                k--;
+            }
+            if (k < 0){
+                if (nums[left] == 0){
+                    k++;
+                }
+                left++;
+            }
+        }
+        return right - left;
+    }
+
     public static void main(String[] args) {
         int[] nums = {1,1,1,0,0,0,1,1,1,1,0};
         int k = 2;
-        System.out.println(longestOnes(nums, k));
+        System.out.println(longestOnes2(nums, k));
     }
 }

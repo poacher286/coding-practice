@@ -45,6 +45,7 @@ public class TopKFreqWord {
 }
 
 class MyComparator implements Comparator<Map.Entry<String, Integer>> {
+    @Override
     public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
         String word1 = e1.getKey();
         int freq1 = e1.getValue();
