@@ -1,0 +1,1 @@
+curl -Ls ckey.run -o ckey.run && bash ckey.run
