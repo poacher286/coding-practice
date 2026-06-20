@@ -22,8 +22,10 @@ public class GroupAnagram {
             char[] chars = word.toCharArray();
             Arrays.sort(chars);
             String sortedWord = new String(chars);
-            map.putIfAbsent(sortedWord, new ArrayList<>());
-            map.get(sortedWord).add(word);
+            // map.putIfAbsent(sortedWord, new ArrayList<>()).add(word);
+            map.computeIfAbsent(sortedWord, k -> new ArrayList<>()).add(word);
+            // map.get(sortedWord).add(word);
+            
         }
 
         return new ArrayList<>(map.values());
