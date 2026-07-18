@@ -1,8 +1,8 @@
-package slidingWindow;
+package stacks;
 
-import java.util.Arrays;
+import java.util.Stack;
 
-public class FinalPriceWithSpecialDiscount {
+public class FinalPrices {
     /**
      * You are given an integer array prices where prices[i] is the price of the ith item in a shop.
      * <p>
@@ -21,33 +21,27 @@ public class FinalPriceWithSpecialDiscount {
      * For item 1 with price[1]=4 you will receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 4 - 2 = 2.
      * For item 2 with price[2]=6 you will receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 6 - 2 = 4.
      * For items 3 and 4 you will not receive any discount at all.
-     * @param prices
-     * @return
      */
-    public static int[] finalPrices(int[] prices) {
-        if (prices.length < 2){
-            return prices;
-        }
-        int left = 0;
-        int right = 1;
-        while (right < prices.length) {
-            //right operation to make window valid
-            if (prices[right] <= prices[left]){
-                prices[left] -= prices[right];
-                left++;
-                right = left + 1;
-            }else if(right == prices.length - 1) {//right reches last element
-                left++;
-                right = left + 1;
-            }else {
-                right++;
+    public int[] finalPrices(int[] prices) {
+        Stack<Pair> priceStack = new Stack<>();
+        int L = prices.length;
+        int[] res = new int[L];//we do not require this as we need to update the same array
+        for (int i = 0; i < L; i++) {
+            while(!priceStack.isEmpty() && prices[priceStack.peek().idx] >= prices[i]){//find next smallest element
+                Pair pair = priceStack.pop();
+                prices[pair.idx] -= prices[i];//if found update the existing array
             }
+            priceStack.push(new Pair(prices[i], i));
         }
         return prices;
     }
 
-    public static void main(String[] args) {
-        int[] prices = {8,4,6,2,3};
-        System.out.println(Arrays.toString(finalPrices(prices)));
+    static class Pair{
+        int price;
+        int idx;
+        Pair(int price, int idx){
+            this.price = price;
+            this.idx = idx;
+        }
     }
 }
