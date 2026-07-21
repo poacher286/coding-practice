@@ -41,6 +41,39 @@ public class ArithmeticTriplets {
         return count;
     }
 
+    public int arithmeticTriplets2(int[] nums, int diff) {
+        // j - i = diff
+        // k - j = diff
+        // i = init
+        // j = diff + i
+        // k = diff + j
+        // k = diff + diff + i
+        // k = 2 * diff + i
+
+        // for each element (i) find (j) is present or not
+        // if present find (k)
+        // if (j) and (k) found update counter
+        int counter = 0;
+        for (int num : nums) {
+            if (binarySearch(nums, num + diff) && binarySearch(nums, num + 2 * diff)) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    private boolean binarySearch(int[] nums, int target){
+        int left = 0;
+        int right = nums.length - 1;
+        while(left <= right){
+            int mid = left + (right - left) / 2;
+            if(nums[mid] == target) return true;
+            else if(nums[mid] < target) left = mid + 1;
+            else right = mid - 1;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         int[] nums = {1,3,4,6,7,11};
         int diff = 5;
