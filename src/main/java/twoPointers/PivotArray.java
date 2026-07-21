@@ -41,9 +41,28 @@ public class PivotArray {
 
     }
 
+    public static int[] pivotArray2(int[] nums, int pivot) {
+        int L = nums.length;
+        int left1 = 0;
+        int right1 = L - 1;
+        int left2 = 0;
+        int right2 = L - 1;
+        int[] res = new int[L];
+
+        while (left1 < L) {
+            if (nums[left1] < pivot) res[left2++] = nums[left1];
+            if (nums[right1] > pivot) res[right2--] = nums[right1];
+            left1++;
+            right1--;
+        }
+
+        Arrays.fill(res, left2, right2 + 1, pivot);
+        return res;
+    }
+
     public static void main(String[] args) {
-        int[] nums = {9,12,5,10,14,3,10};
-        int pivot = 10;
-        System.out.println(Arrays.toString(pivotArray(nums, pivot)));
+        int[] nums = {4,0,4,5,-11};
+        int pivot = 5;
+        System.out.println(Arrays.toString(pivotArray2(nums, pivot)));
     }
 }
