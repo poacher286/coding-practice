@@ -1,5 +1,6 @@
 package twoPointers;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -56,6 +57,34 @@ public class ArithmeticTriplets {
         int counter = 0;
         for (int num : nums) {
             if (binarySearch(nums, num + diff) && binarySearch(nums, num + 2 * diff)) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public int arithmeticTriplets3(int[] nums, int diff) {
+        int counter = 0;
+        Set<Integer> numSet = new HashSet<>();
+        for (int num : nums) {
+            numSet.add(num);
+        }
+        for (int num : nums) {
+            if (numSet.contains(num + diff) && numSet.contains(num + 2 * diff)) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public int arithmeticTriplets4(int[] nums, int diff) {
+        HashMap<Integer, Integer> seen = new HashMap<>();
+        int counter = 0;
+        for (int i = 0; i < nums.length; i++) {
+            seen.put(nums[i], i);
+        }
+        for (int num : nums) {
+            if (seen.containsKey(num + diff) && seen.containsKey(num + 2 * diff)) {
                 counter++;
             }
         }
