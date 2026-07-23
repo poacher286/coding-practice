@@ -29,4 +29,20 @@ public class SearchIn2DMatrix {
         }
         return false;
     }
+
+    //O(NlogN)
+    public boolean searchMatrix2(int[][] matrix, int target) {
+        for(int[] row : matrix){
+            int left = 0;
+            int right = row.length - 1;
+
+            while(left <= right){
+                int mid = left + (right - left) / 2;
+                if(row[mid] < target) left = mid + 1;
+                else if(row[mid] > target) right = mid - 1;
+                else return true;
+            }
+        }
+        return false;
+    }
 }
