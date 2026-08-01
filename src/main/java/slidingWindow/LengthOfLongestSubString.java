@@ -128,6 +128,20 @@ public class LengthOfLongestSubString {
         return maxLength;
     }
 
+    public int lengthOfLongestSubstringQueue(String s) {
+        int maxLength = 0;
+        Queue<Character> queue = new LinkedList<>();
+        for(char c : s.toCharArray()){
+            while(queue.contains(c)){
+                queue.poll();
+            }
+
+            queue.offer(c);
+            maxLength = Math.max(maxLength, queue.size());
+        }
+        return maxLength;
+    }
+
     public static void main(String[] args) {
         String s = "abcabcbb";
         System.out.println(lengthOfLongestSubstring(s));
