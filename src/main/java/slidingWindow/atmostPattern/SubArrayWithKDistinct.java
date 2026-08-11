@@ -1,4 +1,9 @@
-package slidingWindow;
+package slidingWindow.atmostPattern;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * Given an integer array nums and an integer k, return the number of good subarrays of nums.
@@ -42,6 +47,29 @@ public class SubArrayWithKDistinct {
             res += right - left;
         }
         return res;
+    }
+
+    public int subarraysWithKDistinct2(int[] nums, int k) {
+        return atmost(nums, k) - atmost(nums, k - 1);
+    }
+
+    public int atmost(int[] nums, int k) {
+        Set<Integer> set = new HashSet<>();
+        Queue<Integer> queue = new LinkedList<>();
+        int noOfSubarrray = 0;
+        for (int num : nums) {
+            //right operation
+            //each subarray should have atleast k elements
+            set.add(num);
+            queue.offer(num);
+
+            while (set.size() > k) {
+                int removed = queue.poll();
+                if (!queue.contains(removed)) set.remove(removed);
+            }
+            noOfSubarrray += queue.size();
+        }
+        return noOfSubarrray;
     }
 
     public static void main(String[] args) {

@@ -71,18 +71,16 @@ public class MaxConsecutiveOncesIII {
     public static int longestOnes2(int[] nums, int k) {
         int left = 0;
         int right = 0;
+        int max = 0;
         for(; right < nums.length; right++){
-            if (nums[right] == 0){
-                k--;
+            if(nums[right] == 0) k--;//right operation to make window invalid
+            while(k < 0){//check where window will become valid again
+                if(nums[left] == 0) k++;//make window valid
+                left++;//update left element
             }
-            if (k < 0){
-                if (nums[left] == 0){
-                    k++;
-                }
-                left++;
-            }
+            max = Math.max(max, right - left + 1);//update max
         }
-        return right - left;
+        return max;
     }
 
     public static void main(String[] args) {

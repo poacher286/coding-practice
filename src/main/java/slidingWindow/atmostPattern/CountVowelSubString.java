@@ -1,4 +1,4 @@
-package slidingWindow;
+package slidingWindow.atmostPattern;
 
 import java.util.HashMap;
 import java.util.Map;

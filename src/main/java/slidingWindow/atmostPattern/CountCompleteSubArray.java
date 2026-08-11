@@ -1,9 +1,6 @@
-package slidingWindow;
+package slidingWindow.atmostPattern;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 
 /**
  * You are given an array nums consisting of positive integers.
@@ -37,6 +34,31 @@ public class CountCompleteSubArray {
             }
         }
         return count;
+    }
+
+    public int countCompleteSubarrays2(int[] nums) {
+        int distinct = (int) Arrays.stream(nums).distinct().count();
+        //exactly distinct
+        return atmost(nums, distinct) - atmost(nums, distinct - 1);
+    }
+
+    public int atmost(int[] nums, int k) {
+        Set<Integer> set = new HashSet<>();
+        Queue<Integer> queue = new LinkedList<>();
+        int noOfSubarrray = 0;
+        for (int num : nums) {
+            //right operation
+            //each subarray should have atleast k elements
+            set.add(num);
+            queue.offer(num);
+
+            while (set.size() > k) {
+                int removed = queue.poll();
+                if (!queue.contains(removed)) set.remove(removed);
+            }
+            noOfSubarrray += queue.size();
+        }
+        return noOfSubarrray;
     }
 
     public static void main(String[] args) {

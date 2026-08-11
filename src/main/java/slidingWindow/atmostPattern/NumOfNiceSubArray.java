@@ -1,4 +1,4 @@
-package slidingWindow;
+package slidingWindow.atmostPattern;
 
 /**
  * Given an array of integers nums and an integer k.
