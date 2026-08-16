@@ -31,4 +31,25 @@ public class BinarySubArrayWithSum {
         }
         return subArrayCount;
     }
+
+    public int numSubarraysWithSum2(int[] nums, int goal) {
+        return atmost(nums, goal) - atmost(nums, goal - 1);
+    }
+
+    public int atmost(int[] nums, int k){
+        int left = 0;
+        int right = 0;
+        int noOfSubarray = 0;
+        int sum = 0;
+        for(; right < nums.length; right++){
+            sum += nums[right];
+
+            while(left <= right && sum > k){
+                sum -= nums[left++];
+            }
+
+            noOfSubarray += right - left + 1;
+        }
+        return noOfSubarray;
+    }
 }
